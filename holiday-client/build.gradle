@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.openapi.generator' version "7.11.0"
+}
+
+group = 'com.omar'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+openApiGenerate {
+    generatorName = 'java'
+    library = 'native'
+    remoteInputSpec = 'https://date.nager.at/swagger/v3/swagger.json'
+    outputDir = "${layout.buildDirectory}/generated"
+    apiPackage = 'com.omar.holidayclient.client'
+    modelPackage = 'com.omar.holidayclient.model'
+    configOptions = [
+            skipOperationExample: "true",
+            useJakartaEe: "true",
+    ]
+    importMappings = [
+            "java.time.OffsetDateTime": "java.time.LocalDateTime"
+    ]
+    typeMappings = [
+            OffsetDateTime: "LocalDateTime"
+    ]
+    configOptions = [
+            dateLibrary: 'java8'
+    ]
+}
+
+test {
+    useJUnitPlatform()
+}
