@@ -7,11 +7,22 @@ plugins {
 group = 'com.omar'
 version = 'unspecified'
 
+ext {
+    jacksonAnnotationsVersion = '2.18.2'
+    openApiJacksonBindVersion = '0.2.6'
+    jakartaAnnotationVersion = '3.0.0'
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonAnnotationsVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonAnnotationsVersion}"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonAnnotationsVersion}"
+    implementation "org.openapitools:jackson-databind-nullable:${openApiJacksonBindVersion}"
+    implementation "jakarta.annotation:jakarta.annotation-api:${jakartaAnnotationVersion}"
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
@@ -20,12 +31,13 @@ openApiGenerate {
     generatorName = 'java'
     library = 'native'
     remoteInputSpec = 'https://date.nager.at/swagger/v3/swagger.json'
-    outputDir = "${layout.buildDirectory}/generated"
+    outputDir = "${buildDir}/generated"
     apiPackage = 'com.omar.holidayclient.client'
     modelPackage = 'com.omar.holidayclient.model'
     configOptions = [
             skipOperationExample: "true",
             useJakartaEe: "true",
+            dateLibrary: 'java8'
     ]
     importMappings = [
             "java.time.OffsetDateTime": "java.time.LocalDateTime"
@@ -33,9 +45,14 @@ openApiGenerate {
     typeMappings = [
             OffsetDateTime: "LocalDateTime"
     ]
-    configOptions = [
-            dateLibrary: 'java8'
-    ]
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += "${buildDir}/generated/src/main/java"
+        }
+    }
 }
 
 test {

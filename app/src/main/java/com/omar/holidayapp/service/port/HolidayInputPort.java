@@ -1,9 +1,9 @@
-package com.omar.holidayapi.service.port;
+package com.omar.holidayapp.service.port;
 
 import java.util.List;
 
-import com.omar.holidayapi.model.CommonHoliday;
-import com.omar.holidayapi.model.Holiday;
+import com.omar.holidayapp.model.CommonHoliday;
+import com.omar.holidayapp.model.Holiday;
 
 public interface HolidayInputPort {
 

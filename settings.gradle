@@ -1,4 +1,4 @@
-rootProject.name = 'holiday-api'
+rootProject.name = 'holiday-app'
 include 'app'
-include 'holiday-client'
+include 'client'
 

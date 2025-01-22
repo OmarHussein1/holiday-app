@@ -1,4 +1,4 @@
-package com.omar.holidayapi.model;
+package com.omar.holidayapp.model;
 
 import java.time.LocalDate;
 

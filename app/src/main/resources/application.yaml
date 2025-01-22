@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: holiday-api
+
+nager:
+  api:
+    url: https://holidayapi.com/v1/holidays
