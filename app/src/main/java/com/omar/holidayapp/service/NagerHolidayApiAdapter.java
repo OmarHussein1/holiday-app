@@ -11,7 +11,9 @@ import com.omar.holidayapp.service.port.HolidayApiPort;
 import com.omar.holidayclient.ApiException;
 import com.omar.holidayclient.client.CountryApi;
 import com.omar.holidayclient.client.PublicHolidayApi;
+import org.springframework.stereotype.Service;
 
+@Service
 public class NagerHolidayApiAdapter implements HolidayApiPort {
 
 	private final NagerMapper mapper;
@@ -34,7 +36,7 @@ public class NagerHolidayApiAdapter implements HolidayApiPort {
 					.map(mapper::toDomain)
 					.toList();
 		} catch (ApiException e) {
-			throw new ApplicationException("Could not fetch public holidays, status code " + e.getCode(), e);
+			throw new ApplicationException("Could not fetch public holidays, status code " + e.getCode(), e, e.getCode());
 		}
 	}
 
@@ -47,7 +49,7 @@ public class NagerHolidayApiAdapter implements HolidayApiPort {
 					.map(mapper::toDomain)
 					.toList();
 		} catch (ApiException e) {
-			throw new ApplicationException("Could not fetch next public holiday, status code " + e.getCode(), e);
+			throw new ApplicationException("Could not fetch next public holiday, status code " + e.getCode(), e, e.getCode());
 		}
 	}
 
@@ -60,7 +62,7 @@ public class NagerHolidayApiAdapter implements HolidayApiPort {
 					.map(mapper::toDomain)
 					.toList();
 		} catch (ApiException e) {
-			throw new ApplicationException("Could not fetch available countries, status code" + e.getCode(), e);
+			throw new ApplicationException("Could not fetch available countries, status code" + e.getCode(), e, e.getCode());
 		}
 	}
 }

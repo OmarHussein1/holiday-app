@@ -12,21 +12,21 @@ import lombok.Getter;
 @Configuration
 public class NagerApiConfig {
 
-	@Value("${nager.api.url}")
-	private String url;
+    @Value("${nager.api.url}")
+    private String url;
 
-	public PublicHolidayApi getHolidayApi(){
-		return new PublicHolidayApi(getApiClient());
-	}
+    public PublicHolidayApi getHolidayApi() {
+        return new PublicHolidayApi(getApiClient());
+    }
 
-	public CountryApi getCountryApi() {
-		return new CountryApi(getApiClient());
-	}
+    public CountryApi getCountryApi() {
+        return new CountryApi(getApiClient());
+    }
 
-	private ApiClient getApiClient() {
-		ApiClient apiClient = new ApiClient();
-		apiClient.setBasePath(url);
-		return apiClient;
-	}
+    private ApiClient getApiClient() {
+        ApiClient apiClient = new ApiClient();
+        apiClient.updateBaseUri(url);
+        return apiClient;
+    }
 }
 

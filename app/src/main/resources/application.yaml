@@ -4,4 +4,4 @@ spring:
 
 nager:
   api:
-    url: https://holidayapi.com/v1/holidays
+    url: https://date.nager.at
