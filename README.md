@@ -6,9 +6,9 @@ HolidayApp is a Java-based application designed to interact with holiday data. I
 - Count holidays in a given year that do not fall on weekends.
 - Find common holidays between two countries for a specific year.
 
-The application has 2 modes of operation:
-1. **Interactive Mode:** The user can interact with the application through the command line.
-2. **REST API Mode:** The user can interact with the application through a REST API.
+The user can interact with the application through a REST API.
+
+Check out the [API documentation](http://localhost:8080/swagger-ui.html) for more information once your run the application.
 
 ---
 
@@ -33,18 +33,14 @@ The application has 2 modes of operation:
 ### Prerequisites
 Ensure the following are installed on your system:
 - Java 21 or later
-- Gradle 7.x or later (optional if using the Gradle Wrapper)
 
 ### Clone the Repository
 ```bash
 git clone https://github.com/OmarHussein1/holidayapp.git
 cd holidayapp
 ```
-### Run the Application in REST API Mode
+### Run the Application
+Application will run on port 8080 by default.
 ```bash
 ./gradlew bootRun
-```
-### Run the Application in Interactive Mode
-```bash
-./gradlew bootRun --args='cli'
 ```
